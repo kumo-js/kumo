@@ -1,0 +1,15 @@
+{
+  "name": "kumo",
+  "version": "0.0.1",
+  "description": "",
+  "bin": {
+    "kumo": "bin/kumo.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MYOB-Technology/kumo.git"
+  },
+  "keywords": [],
+  "author": "",
+  "homepage": "https://github.com/MYOB-Technology/kumo#readme"
+}
