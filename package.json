@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "",
   "bin": {
-    "kumo": "bin/kumo.js"
+    "kumo": "bin/cli.js"
   },
   "repository": {
     "type": "git",
