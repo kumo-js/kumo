@@ -12,5 +12,11 @@
   "keywords": [],
   "author": "",
   "homepage": "https://github.com/MYOB-Technology/kumo#readme",
-  "dependencies": {}
+  "dependencies": {
+    "bluebird": "^3.4.1",
+    "find-up": "^1.1.2",
+    "lodash": "^4.13.1",
+    "minimist": "^1.2.0",
+    "shellpromise": "^1.4.0"
+  }
 }
