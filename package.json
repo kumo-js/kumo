@@ -14,6 +14,7 @@
   "homepage": "https://github.com/MYOB-Technology/kumo#readme",
   "dependencies": {
     "bluebird": "^3.4.1",
+    "commander": "^2.9.0",
     "find-up": "^1.1.2",
     "lodash": "^4.13.1",
     "minimist": "^1.2.0",

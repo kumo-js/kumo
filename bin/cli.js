@@ -1,11 +1,24 @@
 #! /usr/bin/env node
 
+'use strict';
+
 const fs = require('fs');
 const _ = require('lodash');
 const minimist = require('minimist');
+const program = require('commander');
 const FileFinder = require('../lib/file-finder');
 const EnvContext = require('../lib/env-context');
 const CommandFactory = require('../lib/command-factory');
+
+program
+  .arguments('<file>')
+  .option('-u, --username <username>', 'The user to authenticate as')
+  .option('-p, --password <password>', 'The user\'s password')
+  .action(function(file) {
+    console.log('user: %s pass: %s file: %s',
+        program.username, program.password, file);
+  })
+  .parse(process.argv);
 
 const args = minimist(process.argv.slice(2));
 const reservedOptions = _.pick(args, 'cwd');
