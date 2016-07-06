@@ -1,4 +1,4 @@
-#! /usr/bin/env node
+#!/usr/bin/env node
 
 'use strict';
 
@@ -11,19 +11,30 @@ const EnvContext = require('../lib/env-context');
 const CommandFactory = require('../lib/command-factory');
 
 program
-  .arguments('<file>')
-  .option('-u, --username <username>', 'The user to authenticate as')
-  .option('-p, --password <password>', 'The user\'s password')
-  .action(function(file) {
-    console.log('user: %s pass: %s file: %s',
+    .version(require('../package').version)
+    .arguments('<file>')
+    .option('-u, --username <username>', 'The user to authenticate as')
+    .option('-p, --password <password>', 'The user\'s password')
+    .action(function(file) {
+        console.log('user: %s pass: %s file: %s',
         program.username, program.password, file);
-  })
-  .parse(process.argv);
+    })
+    .parse(process.argv);
 
 const args = minimist(process.argv.slice(2));
 const reservedOptions = _.pick(args, 'cwd');
-const action = {name: args._, options: _.omit(args, _.concat(['_'], reservedOptions.keys))};
 
-const envContext = new EnvContext({fs: fs, fileFinder: new FileFinder(), options: reservedOptions});
+const action = {
+    name: args._,
+    options: _.omit(args, _.concat(['_'],
+    reservedOptions.keys))
+};
+
+const envContext = new EnvContext({
+    fs: fs,
+    fileFinder: new FileFinder(),
+    options: reservedOptions
+});
+
 const commandFactory = new CommandFactory({envContext: envContext});
 commandFactory.createCommand(action).execute();
