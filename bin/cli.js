@@ -2,16 +2,22 @@
 'use strict';
 
 const fs = require('fs');
-const _ = require('lodash');
-const minimist = require('minimist');
-const FileFinder = require('../lib/file-finder');
-const EnvContext = require('../lib/env-context');
+const Promise = require('bluebird');
+const ArgsParser = require('../lib/cli-args-parser');
 const CommandFactory = require('../lib/command-factory');
+const ConsoleLogger = require('../lib/console-logger');
+const EnvContext = require('../lib/env-context');
+const FileFinder = require('../lib/file-finder');
 
-const args = minimist(process.argv.slice(2));
-const reservedOptions = _.pick(args, 'cwd');
-const action = {name: args._, options: _.omit(args, _.concat(['_'], reservedOptions.keys))};
-const envContext = new EnvContext({fs: fs, fileFinder: new FileFinder(), options: reservedOptions});
-const commandFactory = new CommandFactory({envContext: envContext});
+const args = new ArgsParser(process.argv).parse();
+const fileFinder = new FileFinder();
+const logger = new ConsoleLogger({verbose: args.kumoOptions.verbose});
+const envContext = new EnvContext({fs, fileFinder, options: {cwd: args.kumoOptions.cwd}});
+const commandFactory = new CommandFactory({envContext, logger});
 
-commandFactory.createCommand(action).execute();
+Promise.resolve()
+    .then(() => commandFactory.createCommand(args.action).execute())
+    .catch(err => {
+        logger.error('Operation failed!', err);
+        process.exit(1)
+    });
