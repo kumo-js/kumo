@@ -1,23 +1,18 @@
 #!/usr/bin/env node
 'use strict';
 
-const fs = require('fs');
 const Promise = require('bluebird');
-const ArgsParser = require('../lib/cli-args-parser');
-const CommandFactory = require('../lib/command-factory');
 const ConsoleLogger = require('../lib/console-logger');
-const KumoContext = require('../lib/kumo-context');
-const FileFinder = require('../lib/file-finder');
+const KumoArgsParser = require('../lib/kumo-args-parser');
+const KumoCommandFactory = require('../lib/kumo-command-factory');
 
-const args = new ArgsParser(process.argv).parse();
-const fileFinder = new FileFinder();
-const logger = new ConsoleLogger({verbose: args.kumoOptions.verbose});
-const kumoContext = new KumoContext({fs, fileFinder, options: {cwd: args.kumoOptions.cwd}});
-const commandFactory = new CommandFactory({kumoContext, logger});
+const args = new KumoArgsParser().parse(process.argv);
+const logger = new ConsoleLogger({verbose: args.globalOptions.verbose});
+const commandFactory = new KumoCommandFactory({logger});
 
 Promise.resolve()
-    .then(() => commandFactory.createCommand(args.action).execute())
+    .then(() => commandFactory.createCommand(args).execute())
     .catch(err => {
         logger.error('Operation failed!', err);
-        process.exit(1)
+        process.exit(1);
     });
