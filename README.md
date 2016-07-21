@@ -51,7 +51,7 @@ We believe:
 ## Isolation
 
 We intend to support the ability to easily maintain multiple environments within an AWS account.
-We believe that resources deployed to a particular environment should not isolated,
+We believe that resources deployed to a particular environment should be isolated,
 and not "promoted" across environments using mechanisms like API Gateway stages, and Lambda aliases.
 This can cause complexity in the management of environment configuration.
 
@@ -72,11 +72,11 @@ We reviewed the Serverless framework in July 2016 and were concerned about the f
 
 Tool to build, deploy, and manage AWS Lambda functions.
 
-Apex (you probably know more than me):
+Apex:
 - Centred around lambda
 - Supports GoLang
 - Uses raw sdk calls to create resources
-- Seems support some kind integration with terraform for creating other aws resources but does not seem very stable (looking at github issues)
+- Seems support some kind integration with terraform for creating other aws resources but does not seem very stable at this stage (based on github issues)
 
 ### Gordon
 
@@ -84,6 +84,6 @@ Gordon is a tool to create, wire and deploy AWS Lambdas using CloudFormation
 
 - Used to create / deploy lambda functions and API Gateway
 - Whilst not exactly centred around AWS Lambda, only supports API Gateway integrations to Lambda
-- cannot create other related AWS resources (eg. S3 Buckets, DynamoDB tables etc)
-- 100% Cloudformation (no direct SDK calls)
-- 100% isolation between environments (does not believe in using Lambda versions and API Gateway stages)
+- Does not concern itself with management of other dependent AWS resources (eg. S3 Buckets, DynamoDB tables etc)
+- 100% CloudFormation
+- 100% isolation between environments (does not use Lambda versions and API Gateway stages)
