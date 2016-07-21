@@ -22,11 +22,11 @@ Because we believe:
 - Your application code shouldn't be coupled to the deployment tool
 - You should be able to change your deployment tool later
 
-## Cloud Formation (or not)
+## CloudFormation (or not)
 
-Developers seems to have a love/hate relationship with Cloud Formation.
-Cloud Formation has the advantage of creating/updating/deleting groups of resources, but has enough gaps to require the use of the SDK.
-Therefore we wish to support both Cloud Formation, and/or direct use of the SDK.
+Developers seems to have a love/hate relationship with CloudFormation.
+CloudFormation has the advantage of creating/updating/deleting groups of resources, but has enough gaps to require the use of the SDK.
+Therefore we wish to support both CloudFormation, and/or direct use of the SDK.
 
 ## Serverless (or not)
 
@@ -37,7 +37,7 @@ moving toward a lower level of abstraction based on the specific needs of your a
 Lambda/API Gateway -> PaaS (e.g. Heroku) -> Elastic Beanstalk -> ECS (Docker) -> EC2 -> Own servers
 - Your application should be able to leverage resources of various degrees of abstraction
 - You should be able to change your infrastructure choices later
- 
+
 Therefore we want to avoid centering the tool around any specific types of resources, e.g. not Lambda-centric, not ECS-centric.
 
 ## Multi-region
@@ -51,7 +51,7 @@ We believe:
 ## Isolation
 
 We intend to support the ability to easily maintain multiple environments within an AWS account.
-We believe that resources deployed to a particular environment should not isolated, 
+We believe that resources deployed to a particular environment should not isolated,
 and not "promoted" across environments using mechanisms like API Gateway stages, and Lambda aliases.
 This can cause complexity in the management of environment configuration.
 
@@ -62,8 +62,28 @@ This can cause complexity in the management of environment configuration.
 We reviewed the Serverless framework in July 2016 and were concerned about the following limitations:
 
 - Lambda-centric. Serverless specifically revolves around AWS Lambda. What if we need to deploy an API Gateway without Lambda?
-- No Swagger integration. API Gateway endpoints defined in a non-standard form and coupled to Lambda configuration. 
-- Sydney region not yet supported. (Although we could submit a pull request.) 
+- No Swagger integration. API Gateway endpoints defined in a non-standard form and coupled to Lambda configuration.
+- Sydney region not yet supported. (Although we could submit a pull request.)
 - No stack hierarchy. No concept of global or shared stacks. (Supposedly available in the upcoming version 0.6).
 - No config hierarchy. No concept of services inheriting common config.
 - Uses Lambda versions and API Gateway stages, where we prefer complete separation of these resources.
+
+### Apex
+
+Tool to build, deploy, and manage AWS Lambda functions.
+
+Apex (you probably know more than me):
+- Centred around lambda
+- Supports GoLang
+- Uses raw sdk calls to create resources
+- Seems support some kind integration with terraform for creating other aws resources but does not seem very stable (looking at github issues)
+
+### Gordon
+
+Gordon is a tool to create, wire and deploy AWS Lambdas using CloudFormation
+
+- Used to create / deploy lambda functions and API Gateway
+- Whilst not exactly centred around AWS Lambda, only supports API Gateway integrations to Lambda
+- cannot create other related AWS resources (eg. S3 Buckets, DynamoDB tables etc)
+- 100% Cloudformation (no direct SDK calls)
+- 100% isolation between environments (does not believe in using Lambda versions and API Gateway stages)
