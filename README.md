@@ -40,14 +40,6 @@ Lambda/API Gateway -> PaaS (e.g. Heroku) -> Elastic Beanstalk -> ECS (Docker) ->
 
 Therefore we want to avoid centering the tool around any specific types of resources, e.g. not Lambda-centric, not ECS-centric.
 
-## Multi-region
-
-We believe:
-
-- In designing for failure. AWS also recommends this. We intend to make it easy to replicate your infrastructure across multiple regions
-- A multi-region solution can help optimise user experience by keeping storage and compute resources closer to the user
-- You shouldn't be restricted from using resources not currently available in the desired region where the impact of that decision is acceptable
-
 ## Isolation
 
 We intend to support the ability to easily maintain multiple environments within an AWS account.
