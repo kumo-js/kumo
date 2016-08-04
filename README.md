@@ -4,6 +4,8 @@ Kumo, Japanese for "cloud", is a language agnostic tool for deploying stacks to 
 
 In it's most basic form, Kumo is a command line runner ...
 
+Kumo can be enhanced with plugins. See <https://github.com/MYOB-Technology/kumo-plugins>
+
 ## Requirements
 
 ## Language Agnostic
