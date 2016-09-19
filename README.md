@@ -83,12 +83,15 @@ Gordon is a tool to create, wire and deploy AWS Lambdas using CloudFormation
 - 100% isolation between environments (does not use Lambda versions and API Gateway stages)
 
 ## Usage
-
 ```
 kumo <action> <args>
-
-args available to all actions:
-
-  --cwd       sets the current working directory
-  --verbose   enables more detailed logging
+```
+### Built-in actions
+```
+kumo install    installs all configured plugins
+```
+### Global args (available to all actions):
+```
+--cwd           sets the current working directory
+--verbose       enables more detailed logging
 ```
