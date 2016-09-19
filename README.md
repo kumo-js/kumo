@@ -81,3 +81,14 @@ Gordon is a tool to create, wire and deploy AWS Lambdas using CloudFormation
 - Does not concern itself with management of other dependent AWS resources (eg. S3 Buckets, DynamoDB tables etc)
 - 100% CloudFormation
 - 100% isolation between environments (does not use Lambda versions and API Gateway stages)
+
+## Usage
+
+```
+kumo <action> <args>
+
+args available to all actions:
+
+  --cwd       sets the current working directory
+  --verbose   enables more detailed logging
+```
