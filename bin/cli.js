@@ -9,7 +9,7 @@ const KumoArgsParser = require('../lib/kumo-args-parser');
 const KumoCommandFactory = require('../lib/kumo-command-factory');
 
 const args = new KumoArgsParser().parse(process.argv);
-const logger = new ConsoleLogger({verbose: args.globalOptions.verbose});
+const logger = new ConsoleLogger({verbose: args.globalArgs.verbose});
 const fileFinder = new FileFinder();
 const fileReader = new JsonCompatibleFileReader();
 const contextInitializer = new ContextInitializer({fileFinder, fileReader});
