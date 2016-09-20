@@ -1,6 +1,8 @@
 # Kumo
 
-Kumo, Japanese for "cloud", is a language agnostic tool for deploying stacks to AWS.
+**(UNDER DEVELOPMENT)**
+
+Kumo, Japanese for cloud, is a language agnostic tool for deploying stacks to AWS.
 
 In it's most basic form, Kumo is a command line runner ...
 
@@ -52,35 +54,13 @@ This can cause complexity in the management of environment configuration.
 ## Similar Tools
 
 ### Serverless
-
-We reviewed the Serverless framework in July 2016 and were concerned about the following limitations:
-
-- Lambda-centric. Serverless specifically revolves around AWS Lambda. What if we need to deploy an API Gateway without Lambda?
-- No Swagger integration. API Gateway endpoints defined in a non-standard form and coupled to Lambda configuration.
-- Sydney region not yet supported. (Although we could submit a pull request.)
-- No stack hierarchy. No concept of global or shared stacks. (Supposedly available in the upcoming version 0.6).
-- No config hierarchy. No concept of services inheriting common config.
-- Uses Lambda versions and API Gateway stages, where we prefer complete separation of these resources.
+<https://serverless.com/>
 
 ### Apex
-
-Tool to build, deploy, and manage AWS Lambda functions.
-
-Apex:
-- Centred around lambda
-- Supports GoLang
-- Uses raw sdk calls to create resources
-- Seems support some kind integration with terraform for creating other aws resources but does not seem very stable at this stage (based on github issues)
+<http://apex.run/>
 
 ### Gordon
-
-Gordon is a tool to create, wire and deploy AWS Lambdas using CloudFormation
-
-- Used to create / deploy lambda functions and API Gateway
-- Whilst not exactly centred around AWS Lambda, only supports API Gateway integrations to Lambda
-- Does not concern itself with management of other dependent AWS resources (eg. S3 Buckets, DynamoDB tables etc)
-- 100% CloudFormation
-- 100% isolation between environments (does not use Lambda versions and API Gateway stages)
+<https://gordon.readthedocs.io/en/latest/>
 
 ## Usage
 ```
