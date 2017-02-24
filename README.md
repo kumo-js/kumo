@@ -24,12 +24,6 @@ Because we believe:
 - Your application code shouldn't be coupled to the deployment tool
 - You should be able to change your deployment tool later
 
-## CloudFormation (or not)
-
-Developers seems to have a love/hate relationship with CloudFormation.
-CloudFormation has the advantage of creating/updating/deleting groups of resources, but has enough gaps to require the use of the SDK.
-Therefore we wish to support both CloudFormation, and/or direct use of the SDK.
-
 ## Serverless (or not)
 
 We believe:
