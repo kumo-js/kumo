@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/MYOB-Technology/kumo.svg?branch=master)](https://travis-ci.org/MYOB-Technology/kumo)
+
 # Kumo
 
 **(UNDER DEVELOPMENT)**
