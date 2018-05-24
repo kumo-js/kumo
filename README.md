@@ -2,8 +2,6 @@
 
 # Kumo
 
-**(UNDER DEVELOPMENT)**
-
 Kumo, Japanese for cloud, is a language agnostic tool for deploying apps to AWS.
 
 Kumo can be enhanced with plugins. See <https://github.com/MYOB-Technology/kumo-plugins>
